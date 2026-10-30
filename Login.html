@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Member Login | IRONPULSE</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="tw-config.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style type="text/tailwindcss">
+    @layer components {
+      .btn-neon { @apply inline-block rounded-lg bg-neon px-6 py-3 font-bold text-ink transition hover:-translate-y-0.5 hover:brightness-90; }
+      .input    { @apply w-full rounded-lg border border-[#2c3541] bg-[#0f1318] px-3 py-2 text-white focus:border-neon focus:outline-none focus:ring-2 focus:ring-neon/30; }
+      .err      { @apply mt-1 hidden text-sm text-red-400; }
+      .lbl      { @apply mb-1 block text-sm font-semibold; }
+      .tab      { @apply flex-1 rounded-lg py-2 font-semibold text-gray-400 transition; }
+      .tab.on   { @apply bg-neon text-ink; }
+    }
+  </style>
+  <script src="app.js" defer></script>
+</head>
+<body data-page="login" class="bg-ink font-sans text-gray-200 antialiased">
+<div class="grid min-h-screen lg:grid-cols-2">
+
+  <!-- Left: branding -->
+  <aside class="hidden flex-col justify-between bg-[radial-gradient(circle_at_70%_20%,rgba(198,255,61,.22),transparent_26rem),linear-gradient(135deg,#0a0c0f_40%,#141a12)] p-12 lg:flex">
+    <a href="index.html" class="font-display text-2xl font-bold text-white">&#9889; IRON<span class="text-neon">PULSE</span></a>
+    <div>
+      <h1 class="font-display text-5xl font-bold leading-tight text-white">YOUR <span class="text-neon">PROGRESS</span>,<br>ONE LOGIN AWAY</h1>
+      <ul class="mt-6 space-y-3 text-lg text-gray-300">
+        <li>&#10003; Check membership status</li>
+        <li>&#10003; Daily check-in and streaks</li>
+        <li>&#10003; Book your favourite classes</li>
+      </ul>
+    </div>
+    <p class="text-sm text-gray-500">&copy; 2026 IronPulse Gym</p>
+  </aside>
+
+  <!-- Right: forms -->
+  <main class="flex items-center justify-center p-6">
+    <div class="w-full max-w-md">
+      <a href="index.html" class="mb-6 inline-block text-sm text-gray-400 hover:text-neon">&larr; Back to website</a>
+      <div class="rounded-2xl border border-edge bg-panel p-6 sm:p-8">
+        <div class="mb-6 flex gap-2 rounded-xl bg-ink2 p-1" role="tablist">
+          <button type="button" class="tab on" data-tab="login" role="tab">Login</button>
+          <button type="button" class="tab" data-tab="register" role="tab">Register</button>
+        </div>
+
+        <div id="authMsg" class="mb-4" role="status"></div>
+
+        <!-- LOGIN -->
+        <form id="loginForm" class="space-y-4" novalidate>
+          <div><label class="lbl" for="lEmail">Email</label><input id="lEmail" type="email" class="input" required autocomplete="email"><p class="err">Enter a valid email address.</p></div>
+          <div><label class="lbl" for="lPass">Password</label><input id="lPass" type="password" class="input" required minlength="8" autocomplete="current-password"><p class="err">Password must be at least 8 characters.</p></div>
+          <button type="submit" class="btn-neon w-full">Login</button>
+          <p class="text-center text-sm text-gray-500">Demo account: <b>demo@ironpulse.com</b> / <b>demo1234</b></p>
+        </form>
+
+        <!-- REGISTER -->
+        <form id="registerForm" class="hidden space-y-4" novalidate>
+          <div><label class="lbl" for="rName">Full Name</label><input id="rName" type="text" class="input" required minlength="3" autocomplete="name"><p class="err">Please enter your name (min 3 letters).</p></div>
+          <div><label class="lbl" for="rEmail">Email</label><input id="rEmail" type="email" class="input" required autocomplete="email"><p class="err">Enter a valid email address.</p></div>
+          <div><label class="lbl" for="rPhone">Phone</label><input id="rPhone" type="tel" class="input" required pattern="[0-9+\- ]{10,15}"><p class="err">Enter a valid phone number.</p></div>
+          <div><label class="lbl" for="rPlan">Plan</label><select id="rPlan" class="input" required><option value="">Choose...</option><option>Basic</option><option>Pro</option><option>Elite</option></select><p class="err">Please pick a plan.</p></div>
+          <div><label class="lbl" for="rPass">Password</label><input id="rPass" type="password" class="input" required minlength="8" autocomplete="new-password"><p class="err">Password must be at least 8 characters.</p></div>
+          <div><label class="lbl" for="rPass2">Confirm Password</label><input id="rPass2" type="password" class="input" required autocomplete="new-password"><p class="err">Passwords do not match.</p></div>
+          <button type="submit" class="btn-neon w-full">Create Account</button>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

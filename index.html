@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IRONPULSE | Gym &amp; Fitness Club in Karachi</title>
+  <meta name="description" content="IronPulse Gym Karachi: strength training, HIIT, spin and yoga with certified trainers. Book your free week today.">
+  <meta property="og:title" content="IRONPULSE | Gym &amp; Fitness Club">
+  <meta property="og:description" content="Premium equipment, certified trainers, free first week.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0a0c0f">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0c0f'/%3E%3Ctext x='50' y='72' font-size='64' text-anchor='middle'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E">
+
+  <!-- Tailwind CSS (CDN) + Google Font. Internet chahiye. -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <script>
+    /* Tailwind config: apne colors aur fonts */
+    tailwind.config = {
+      theme: { extend: {
+        colors: { neon: "#c6ff3d", ink: "#0a0c0f", ink2: "#11151a", panel: "#171c23", edge: "#262d37" },
+        fontFamily: { display: ["Oswald", "Impact", "sans-serif"], sans: ["Inter", "system-ui", "sans-serif"] }
+      } }
+    };
+  </script>
+
+  <!-- Reusable classes (@apply se) -->
+  <style type="text/tailwindcss">
+    @layer components {
+      .btn-neon  { @apply inline-block rounded-lg bg-neon px-6 py-3 font-bold text-ink transition hover:-translate-y-0.5 hover:brightness-90; }
+      .btn-ghost { @apply inline-block rounded-lg border border-white/40 px-6 py-3 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white hover:text-ink; }
+      .card      { @apply rounded-2xl border border-edge bg-panel p-6 transition duration-300 hover:-translate-y-1.5 hover:border-neon; }
+      .title     { @apply mb-8 font-display text-3xl font-bold uppercase tracking-wide sm:text-4xl; }
+      .input     { @apply w-full rounded-lg border border-[#2c3541] bg-[#0f1318] px-3 py-2 text-white focus:border-neon focus:outline-none focus:ring-2 focus:ring-neon/30; }
+      .err       { @apply mt-1 hidden text-sm text-red-400; }
+      .nav-a     { @apply rounded px-3 py-2 text-sm uppercase tracking-wider text-gray-300 transition hover:text-neon; }
+      .nav-a.on  { @apply text-neon; }
+      .tile      { @apply flex items-end rounded-2xl border border-edge bg-gradient-to-br p-4 font-display text-lg transition hover:scale-[1.02]; }
+      .faq       { @apply rounded-xl border border-edge bg-panel px-5 py-4; }
+      .faq summary { @apply cursor-pointer font-semibold; }
+      .faq p     { @apply mt-2 text-gray-400; }
+    }
+  </style>
+  <script src="script.js" defer></script>
+</head>
+
+<body class="bg-ink font-sans text-gray-200 antialiased">
+
+<!-- NAVBAR -->
+<header id="nav" class="fixed inset-x-0 top-0 z-50 pb-3 transition-all duration-300">
+  <div id="offer" class="mb-3 flex items-center justify-center gap-3 bg-neon px-4 py-2 text-center text-sm font-semibold text-ink">
+    <span data-cfg="offer">Limited offer: Admission FREE this month!</span>
+    <button id="offerClose" class="text-lg leading-none" aria-label="Close offer">&times;</button>
+  </div>
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-4">
+    <a href="#home" class="font-display text-2xl font-bold text-white">&#9889; IRON<span class="text-neon">PULSE</span></a>
+    <button id="menuBtn" class="rounded border border-edge px-3 py-1 text-xl lg:hidden" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    <nav id="menu" class="absolute left-4 right-4 top-full mt-2 hidden flex-col gap-1 rounded-xl bg-ink2 p-4 lg:static lg:mt-0 lg:flex lg:flex-row lg:items-center lg:bg-transparent lg:p-0">
+      <a class="nav-a" href="#home">Home</a>
+      <a class="nav-a" href="#programs">Programs</a>
+      <a class="nav-a" href="#trainers">Trainers</a>
+      <a class="nav-a" href="#bmi">BMI</a>
+      <a class="nav-a" href="#pricing">Pricing</a>
+      <a class="nav-a" href="#schedule">Schedule</a>
+      <a class="nav-a" href="#contact">Contact</a>
+      <a class="nav-a" href="login.html">Member Login</a>
+      <a class="btn-neon !py-2 text-center lg:ml-2" href="#join">Join Now</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section id="home" class="flex min-h-screen items-center pt-32 bg-[radial-gradient(circle_at_80%_25%,rgba(198,255,61,.18),transparent_28rem),linear-gradient(135deg,#0a0c0f_40%,#141a12)] ">
+  <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 lg:grid-cols-5">
+    <div class="lg:col-span-3">
+      <p class="mb-3 font-display tracking-[.25em] text-neon">NO EXCUSES. JUST RESULTS.</p>
+      <h1 class="font-display text-5xl font-bold leading-tight text-white sm:text-7xl">BUILD YOUR <span class="text-neon">STRONGEST</span> SELF</h1>
+      <p class="my-6 max-w-xl text-lg text-gray-400">Premium equipment, certified trainers and programs made for every level. Your first week is on us.</p>
+      <div class="flex flex-wrap gap-3"><a href="#join" class="btn-neon">Start Free Week</a><a href="#programs" class="btn-ghost">Explore Programs</a></div>
+    </div>
+    <div class="grid grid-cols-2 gap-3 text-center lg:col-span-2">
+      <div class="rounded-2xl border border-edge bg-white/5 p-5"><p class="font-display text-4xl font-bold text-neon"><span class="counter" data-target="2500">0</span>+</p><p class="text-sm text-gray-400">Active Members</p></div>
+      <div class="rounded-2xl border border-edge bg-white/5 p-5"><p class="font-display text-4xl font-bold text-neon"><span class="counter" data-target="30">0</span>+</p><p class="text-sm text-gray-400">Expert Trainers</p></div>
+      <div class="rounded-2xl border border-edge bg-white/5 p-5"><p class="font-display text-4xl font-bold text-neon"><span class="counter" data-target="120">0</span>+</p><p class="text-sm text-gray-400">Weekly Classes</p></div>
+      <div class="rounded-2xl border border-edge bg-white/5 p-5"><p class="font-display text-4xl font-bold text-neon"><span class="counter" data-target="12">0</span></p><p class="text-sm text-gray-400">Years Strong</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="border-y border-edge bg-ink2 py-10">
+  <div class="mx-auto grid max-w-6xl grid-cols-2 gap-6 px-4 text-center md:grid-cols-4">
+    <div><p class="text-4xl">&#127942;</p><h3 class="mt-2 font-semibold">Premium Equipment</h3></div>
+    <div><p class="text-4xl">&#9200;</p><h3 class="mt-2 font-semibold">Open 5 AM - 12 AM</h3></div>
+    <div><p class="text-4xl">&#128170;</p><h3 class="mt-2 font-semibold">Certified Coaches</h3></div>
+    <div><p class="text-4xl">&#128737;&#65039;</p><h3 class="mt-2 font-semibold">Clean &amp; Safe</h3></div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs" class="scroll-mt-16 py-20">
+  <div class="mx-auto max-w-6xl px-4">
+    <h2 class="title">Our <span class="text-neon">Programs</span></h2>
+    <div id="filters" class="mb-6 flex flex-wrap gap-2">
+      <button data-filter="all" class="fbtn rounded-full border border-neon bg-neon px-4 py-1.5 text-sm font-semibold text-ink">All</button>
+      <button data-filter="strength" class="fbtn rounded-full border border-white/40 px-4 py-1.5 text-sm">Strength</button>
+      <button data-filter="cardio" class="fbtn rounded-full border border-white/40 px-4 py-1.5 text-sm">Cardio</button>
+      <button data-filter="mind" class="fbtn rounded-full border border-white/40 px-4 py-1.5 text-sm">Mind &amp; Body</button>
+    </div>
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <article class="card program" data-cat="strength"><p class="text-4xl">&#127947;&#65039;</p><h3 class="mt-2 font-display text-xl">Strength Training</h3><p class="text-gray-400">Barbells, dumbbells and progressive overload to build real muscle.</p></article>
+      <article class="card program" data-cat="cardio"><p class="text-4xl">&#128293;</p><h3 class="mt-2 font-display text-xl">HIIT Burn</h3><p class="text-gray-400">45-minute high intensity sessions that torch calories fast.</p></article>
+      <article class="card program" data-cat="cardio"><p class="text-4xl">&#128692;</p><h3 class="mt-2 font-display text-xl">Spin Cycle</h3><p class="text-gray-400">Music-driven indoor cycling for stamina and endurance.</p></article>
+      <article class="card program" data-cat="mind"><p class="text-4xl">&#129496;</p><h3 class="mt-2 font-display text-xl">Yoga &amp; Mobility</h3><p class="text-gray-400">Improve flexibility, posture and recovery after heavy days.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINERS -->
+<section id="trainers" class="scroll-mt-16 border-y border-edge bg-ink2 py-20">
+  <div class="mx-auto max-w-6xl px-4">
+    <h2 class="title">Meet The <span class="text-neon">Trainers</span></h2>
+    <div class="grid gap-5 md:grid-cols-3">
+      <article class="card text-center"><div class="mx-auto mb-4 grid h-24 w-24 place-items-center rounded-full bg-gradient-to-br from-neon to-green-400 font-display text-3xl text-ink">AK</div><h3 class="font-display text-xl">Ali Khan</h3><p class="text-neon">Strength Coach</p><p class="mt-1 text-gray-400">8 years experience in powerlifting and muscle building.</p></article>
+      <article class="card text-center"><div class="mx-auto mb-4 grid h-24 w-24 place-items-center rounded-full bg-gradient-to-br from-neon to-green-400 font-display text-3xl text-ink">SA</div><h3 class="font-display text-xl">Sara Ahmed</h3><p class="text-neon">HIIT &amp; Cardio</p><p class="mt-1 text-gray-400">Certified instructor focused on fat loss programs.</p></article>
+      <article class="card text-center"><div class="mx-auto mb-4 grid h-24 w-24 place-items-center rounded-full bg-gradient-to-br from-neon to-green-400 font-display text-3xl text-ink">ZR</div><h3 class="font-display text-xl">Zain Raza</h3><p class="text-neon">Yoga &amp; Mobility</p><p class="mt-1 text-gray-400">Helps members recover faster and move better every day.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- BMI -->
+<section id="bmi" class="scroll-mt-16 py-20">
+  <div class="mx-auto max-w-xl px-4">
+    <h2 class="title text-center">BMI <span class="text-neon">Calculator</span></h2>
+    <form id="bmiForm" class="card hover:!translate-y-0 hover:!border-edge" novalidate>
+      <div class="grid grid-cols-2 gap-4">
+        <div><label for="weight" class="mb-1 block text-sm font-semibold">Weight (kg)</label><input id="weight" type="number" min="20" max="300" class="input" required></div>
+        <div><label for="height" class="mb-1 block text-sm font-semibold">Height (cm)</label><input id="height" type="number" min="100" max="250" class="input" required></div>
+      </div>
+      <button type="submit" class="btn-neon mt-4 w-full">Calculate</button>
+      <div id="bmiResult" class="mt-4" role="status"></div>
+    </form>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="scroll-mt-16 border-y border-edge bg-ink2 py-20">
+  <div class="mx-auto max-w-6xl px-4 text-center">
+    <h2 class="title">Membership <span class="text-neon">Plans</span></h2>
+    <label class="mb-8 inline-flex cursor-pointer items-center gap-3">
+      <span>Monthly</span>
+      <input id="billing" type="checkbox" class="peer sr-only" aria-label="Switch to yearly billing">
+      <span class="relative h-6 w-11 rounded-full bg-edge transition peer-checked:bg-neon peer-focus-visible:ring-2 peer-focus-visible:ring-neon after:absolute after:left-0.5 after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:transition peer-checked:after:translate-x-5"></span>
+      <span>Yearly <span class="rounded bg-yellow-400 px-2 py-0.5 text-xs font-bold text-ink">Save 20%</span></span>
+    </label>
+    <div class="grid gap-5 text-left md:grid-cols-3">
+      <article class="card"><h3 class="font-display text-2xl">Basic</h3><p class="my-3 font-display text-5xl font-bold text-white">$<span data-month="25" data-year="240">25</span><small class="per text-base font-normal text-gray-400">/mo</small></p><ul class="mb-6 space-y-2 text-gray-300"><li>&#10003; Gym floor access</li><li>&#10003; Locker room</li><li>&#10003; 1 fitness assessment</li></ul><a href="#join" class="btn-ghost block text-center">Choose Basic</a></article>
+      <article class="card border-neon shadow-[0_0_40px_rgba(198,255,61,.12)]"><span class="rounded bg-yellow-400 px-2 py-0.5 text-xs font-bold text-ink">MOST POPULAR</span><h3 class="mt-2 font-display text-2xl">Pro</h3><p class="my-3 font-display text-5xl font-bold text-white">$<span data-month="45" data-year="432">45</span><small class="per text-base font-normal text-gray-400">/mo</small></p><ul class="mb-6 space-y-2 text-gray-300"><li>&#10003; Everything in Basic</li><li>&#10003; All group classes</li><li>&#10003; Monthly body scan</li></ul><a href="#join" class="btn-neon block text-center">Choose Pro</a></article>
+      <article class="card"><h3 class="font-display text-2xl">Elite</h3><p class="my-3 font-display text-5xl font-bold text-white">$<span data-month="79" data-year="758">79</span><small class="per text-base font-normal text-gray-400">/mo</small></p><ul class="mb-6 space-y-2 text-gray-300"><li>&#10003; Everything in Pro</li><li>&#10003; Personal trainer (4 sessions)</li><li>&#10003; Diet plan</li></ul><a href="#join" class="btn-ghost block text-center">Choose Elite</a></article>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule" class="scroll-mt-16 py-20">
+  <div class="mx-auto max-w-6xl px-4">
+    <h2 class="title">Class <span class="text-neon">Schedule</span></h2>
+    <div class="overflow-x-auto rounded-2xl border border-edge">
+      <table class="w-full min-w-[480px] text-left">
+        <thead class="bg-panel text-sm uppercase tracking-wider text-neon"><tr><th class="p-4">Day</th><th class="p-4">Class</th><th class="p-4">Time</th><th class="p-4">Trainer</th></tr></thead>
+        <tbody class="divide-y divide-edge">
+          <tr class="hover:bg-panel"><td class="p-4">Monday</td><td class="p-4">Strength Training</td><td class="p-4">6:00 PM</td><td class="p-4">Ali Khan</td></tr>
+          <tr class="hover:bg-panel"><td class="p-4">Tuesday</td><td class="p-4">HIIT Burn</td><td class="p-4">7:00 AM</td><td class="p-4">Sara Ahmed</td></tr>
+          <tr class="hover:bg-panel"><td class="p-4">Wednesday</td><td class="p-4">Spin Cycle</td><td class="p-4">6:30 PM</td><td class="p-4">Sara Ahmed</td></tr>
+          <tr class="hover:bg-panel"><td class="p-4">Thursday</td><td class="p-4">Strength Training</td><td class="p-4">6:00 PM</td><td class="p-4">Ali Khan</td></tr>
+          <tr class="hover:bg-panel"><td class="p-4">Friday</td><td class="p-4">Yoga &amp; Mobility</td><td class="p-4">5:30 PM</td><td class="p-4">Zain Raza</td></tr>
+          <tr class="hover:bg-panel"><td class="p-4">Saturday</td><td class="p-4">HIIT Burn</td><td class="p-4">9:00 AM</td><td class="p-4">Sara Ahmed</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="border-y border-edge bg-ink2 py-20">
+  <div class="mx-auto max-w-3xl px-4 text-center">
+    <h2 class="title">Member <span class="text-neon">Stories</span></h2>
+    <div id="slides" aria-live="polite">
+      <figure class="slide"><blockquote class="text-xl italic sm:text-2xl">"I lost 12 kg in four months. The trainers really care about your progress."</blockquote><figcaption class="mt-3 text-neon">Hamza, Pro Member</figcaption></figure>
+      <figure class="slide hidden"><blockquote class="text-xl italic sm:text-2xl">"Clean gym, friendly people and amazing classes. Best decision this year."</blockquote><figcaption class="mt-3 text-neon">Ayesha, Basic Member</figcaption></figure>
+      <figure class="slide hidden"><blockquote class="text-xl italic sm:text-2xl">"The personal training plan helped me finally build muscle the right way."</blockquote><figcaption class="mt-3 text-neon">Bilal, Elite Member</figcaption></figure>
+    </div>
+    <div id="dots" class="mt-6 flex justify-center gap-2"></div>
+  </div>
+</section>
+
+<!-- JOIN -->
+<section id="join" class="scroll-mt-16 py-20">
+  <div class="mx-auto max-w-2xl px-4">
+    <h2 class="title text-center">Start Your <span class="text-neon">Free Week</span></h2>
+    <form id="joinForm" class="card grid gap-4 hover:!translate-y-0 hover:!border-edge sm:grid-cols-2" novalidate>
+      <div><label for="name" class="mb-1 block text-sm font-semibold">Full Name</label><input id="name" type="text" minlength="3" class="input" required><p class="err">Please enter your name (min 3 letters).</p></div>
+      <div><label for="email" class="mb-1 block text-sm font-semibold">Email</label><input id="email" type="email" class="input" required><p class="err">Enter a valid email address.</p></div>
+      <div><label for="phone" class="mb-1 block text-sm font-semibold">Phone</label><input id="phone" type="tel" pattern="[0-9+\- ]{10,15}" class="input" required><p class="err">Enter a valid phone number.</p></div>
+      <div><label for="plan" class="mb-1 block text-sm font-semibold">Plan</label><select id="plan" class="input" required><option value="">Choose...</option><option>Basic</option><option>Pro</option><option>Elite</option></select><p class="err">Please pick a plan.</p></div>
+      <div class="sm:col-span-2"><label class="flex items-center gap-2"><input id="agree" type="checkbox" class="h-4 w-4 accent-[#c6ff3d]" required> I agree to the gym rules and terms.</label><p class="err">You must agree before joining.</p></div>
+      <button type="submit" class="btn-neon sm:col-span-2">Claim Free Week</button>
+      <div id="joinMsg" class="sm:col-span-2" role="status"></div>
+    </form>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="scroll-mt-16 py-20">
+  <div class="mx-auto max-w-6xl px-4">
+    <h2 class="title">Inside <span class="text-neon">The Gym</span></h2>
+    <!-- Asli photos lagane ke liye: har tile ke andar <img src="images/photo1.jpg" alt="..." class="h-full w-full object-cover"> daalein -->
+    <div class="grid auto-rows-[160px] grid-cols-2 gap-3 md:grid-cols-4 md:auto-rows-[200px]">
+      <div class="tile row-span-2 from-lime-400/30 to-emerald-700/30">&#127947;&#65039; Free Weights</div>
+      <div class="tile from-sky-400/30 to-indigo-700/30">&#128692; Cardio Zone</div>
+      <div class="tile from-orange-400/30 to-red-700/30">&#128293; HIIT Studio</div>
+      <div class="tile row-span-2 from-fuchsia-400/30 to-purple-700/30">&#129496; Yoga Room</div>
+      <div class="tile from-yellow-400/30 to-amber-700/30">&#128135; Locker Rooms</div>
+      <div class="tile from-teal-400/30 to-cyan-700/30">&#129380; Juice Bar</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="scroll-mt-16 border-y border-edge bg-ink2 py-20">
+  <div class="mx-auto max-w-3xl px-4">
+    <h2 class="title text-center">Common <span class="text-neon">Questions</span></h2>
+    <div class="space-y-3">
+      <details class="faq"><summary>Is there a joining or admission fee?</summary><p>Admission is free during our current offer. Monthly fees depend on the plan you choose.</p></details>
+      <details class="faq"><summary>Do you have separate timings for ladies?</summary><p>Yes, we have ladies-only slots and a female trainer. Contact us for the latest timings.</p></details>
+      <details class="faq"><summary>I am a beginner. Can I join?</summary><p>Absolutely. Every new member gets a free fitness assessment and a beginner plan.</p></details>
+      <details class="faq"><summary>Can I freeze my membership?</summary><p>Yes, Pro and Elite members can freeze their plan for up to 30 days per year.</p></details>
+      <details class="faq"><summary>How can I pay?</summary><p>Cash, bank transfer, JazzCash or Easypaisa. Online payment will be added soon.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="scroll-mt-16 py-20">
+  <div class="mx-auto grid max-w-6xl gap-8 px-4 lg:grid-cols-2">
+    <div>
+      <h2 class="title">Visit <span class="text-neon">Us</span></h2>
+      <ul class="space-y-4 text-lg">
+        <li>&#128205; <span data-cfg="address">dehli colony karachi</span></li>
+        <li>&#128222; <a class="hover:text-neon" data-tel data-cfg="phone" href="#">02346287637</a></li>
+        <li>&#9993;&#65039; <a class="hover:text-neon" data-mail data-cfg="email" href="#">123@gmail.com</a></li>
+        <li>&#128339; <span data-cfg="hours">12/6</span></li>
+      </ul>
+      <a data-wa target="_blank" rel="noopener" href="#" class="btn-neon mt-6">Chat on WhatsApp</a>
+    </div>
+    <iframe title="Gym location map" loading="lazy" class="h-72 w-full rounded-2xl border border-edge lg:h-full" src="https://www.google.com/maps?q=Karachi,Pakistan&output=embed"></iframe>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t-4 border-neon bg-black py-10">
+  <div class="mx-auto grid max-w-6xl gap-8 px-4 md:grid-cols-3">
+    <div><a href="#home" class="font-display text-2xl font-bold text-white">&#9889; IRON<span class="text-neon">PULSE</span></a><p class="mt-2 text-gray-400">Train hard. Recover well. Repeat.</p></div>
+    <div><h3 class="mb-2 font-semibold">Quick Links</h3><ul class="space-y-1 text-gray-400"><li><a class="hover:text-neon" href="#programs">Programs</a></li><li><a class="hover:text-neon" href="#pricing">Pricing</a></li><li><a class="hover:text-neon" href="#schedule">Schedule</a></li></ul></div>
+    <div><h3 class="mb-2 font-semibold">Contact</h3><address class="not-italic text-gray-400"><span data-cfg="address"></span>dehhli Colony Karachi<br><span data-cfg="email">123@gmail.com</span><br><span data-cfg="phone">02346287637</span></address></div>
+  </div>
+  <p class="mt-8 text-center text-sm text-gray-500">&copy; 2026 IronPulse Gym. All rights reserved.</p>
+</footer>
+
+<a data-wa target="_blank" rel="noopener" href="#" aria-label="Chat on WhatsApp" class="fixed bottom-4 left-4 z-40 flex h-14 items-center gap-2 rounded-full bg-[#25D366] px-5 font-bold text-white shadow-lg transition hover:scale-105">&#128172; <span class="hidden sm:inline">WhatsApp</span></a>
+
+<button id="toTop" class="pointer-events-none fixed bottom-4 right-4 z-40 h-11 w-11 rounded-full bg-neon text-xl font-bold text-ink opacity-0 transition" aria-label="Back to top">&uarr;</button>
+</body>
+</html>

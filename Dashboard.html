@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Dashboard | IRONPULSE</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="tw-config.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style type="text/tailwindcss">
+    @layer components {
+      .btn-neon  { @apply inline-block rounded-lg bg-neon px-5 py-2.5 font-bold text-ink transition hover:-translate-y-0.5 hover:brightness-90 disabled:cursor-not-allowed disabled:bg-edge disabled:text-gray-400 disabled:hover:translate-y-0; }
+      .btn-ghost { @apply rounded-lg border border-white/30 px-4 py-2 text-sm transition hover:bg-white hover:text-ink; }
+      .panel     { @apply rounded-2xl border border-edge bg-panel p-5; }
+      .h         { @apply mb-3 font-display text-xl uppercase tracking-wide; }
+    }
+  </style>
+  <script src="app.js" defer></script>
+</head>
+<body data-page="dashboard" class="min-h-screen bg-ink font-sans text-gray-200 antialiased">
+
+<header class="border-b border-edge bg-ink2">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+    <a href="index.html" class="font-display text-2xl font-bold text-white">&#9889; IRON<span class="text-neon">PULSE</span></a>
+    <div class="flex items-center gap-3">
+      <span id="hdrName" class="hidden text-sm text-gray-400 sm:inline"></span>
+      <button id="logoutBtn" class="btn-ghost">Logout</button>
+    </div>
+  </div>
+</header>
+
+<main class="mx-auto max-w-6xl space-y-6 px-4 py-8">
+  <div>
+    <h1 class="font-display text-3xl font-bold text-white sm:text-4xl">Welcome back, <span id="welcomeName" class="text-neon"></span> &#128075;</h1>
+    <p class="text-gray-400">Here is your fitness summary.</p>
+  </div>
+
+  <!-- Stats -->
+  <section class="grid gap-4 md:grid-cols-3" aria-label="Summary">
+    <div class="panel"><p class="text-sm text-gray-400">Current Plan</p><p id="planName" class="font-display text-3xl text-neon"></p><p id="joinedOn" class="text-sm text-gray-500"></p></div>
+    <div class="panel">
+      <p class="text-sm text-gray-400">Membership Days Left</p>
+      <p id="daysLeft" class="font-display text-3xl text-white"></p>
+      <div class="mt-2 h-2 overflow-hidden rounded-full bg-edge"><div id="daysBar" class="h-full w-0 rounded-full bg-neon transition-all duration-700"></div></div>
+      <p id="expiryNote" class="mt-2 text-sm"></p>
+    </div>
+    <div class="panel"><p class="text-sm text-gray-400">Check-in Streak</p><p class="font-display text-3xl text-white"><span id="streak">0</span> days &#128293;</p><p class="text-sm text-gray-500"><span id="monthCount">0</span> visits this month</p></div>
+  </section>
+
+  <div class="grid gap-6 lg:grid-cols-2">
+    <!-- Check-in -->
+    <section class="panel" aria-labelledby="ciTitle">
+      <h2 id="ciTitle" class="h">Daily <span class="text-neon">Check-in</span></h2>
+      <button id="checkinBtn" class="btn-neon">Check in today</button>
+      <p id="ciMsg" class="mt-2 text-sm text-gray-400" role="status"></p>
+      <p class="mb-2 mt-5 text-sm text-gray-400">Last 28 days</p>
+      <div id="calendar" class="grid grid-cols-7 gap-1.5"></div>
+    </section>
+
+    <!-- Classes -->
+    <section class="panel" aria-labelledby="clsTitle">
+      <h2 id="clsTitle" class="h">Book a <span class="text-neon">Class</span></h2>
+      <ul id="classList" class="divide-y divide-edge"></ul>
+    </section>
+  </div>
+
+  <!-- My bookings -->
+  <section class="panel" aria-labelledby="bkTitle">
+    <h2 id="bkTitle" class="h">My <span class="text-neon">Bookings</span></h2>
+    <ul id="myBookings" class="space-y-2"></ul>
+  </section>
+</main>
+
+<div id="toast" class="pointer-events-none fixed bottom-4 left-1/2 -translate-x-1/2 rounded-lg bg-neon px-4 py-2 font-semibold text-ink opacity-0 transition" role="status"></div>
+</body>
+</html>
